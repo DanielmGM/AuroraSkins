@@ -178,7 +178,7 @@
       "hash": "B49F04594CBFF4A54FB03E2F7174DF50",
       "nombre": "BladeDash_A",
       "autor": "cutsdbz",
-      "archivo": "cf.cutsdbz.BladeDash_A.cfljson",
+      "archivo": "BladeDash_A by cutsdbz.cfljson",
       "version": "1",
       "size": 40794
     },
@@ -187,7 +187,7 @@
       "hash": "ED03FC75C1C7461549A331813148929B",
       "nombre": "BladeDash_B",
       "autor": "cutsdbz",
-      "archivo": "cf.cutsdbz.BladeDash_B.cfljson",
+      "archivo": "BladeDash_B by cutsdbz.cfljson",
       "version": "1",
       "size": 11813
     },
@@ -196,7 +196,7 @@
       "hash": "55352C294E11CE415225FCBFB71F9EAF",
       "nombre": "BladeDash_C",
       "autor": "cutsdbz",
-      "archivo": "cf.cutsdbz.BladeDash_C.cfljson",
+      "archivo": "BladeDash_C by cutsdbz.cfljson",
       "version": "1",
       "size": 40869
     }
