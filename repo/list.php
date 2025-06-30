@@ -172,6 +172,33 @@
       "archivo": "AuroraNXE by jveda.cfljson",
       "version": "1",
       "size": 40791
+    },
+    {
+      "id": "cf.cutsdbz.BladeDash_A",
+      "hash": "B49F04594CBFF4A54FB03E2F7174DF50",
+      "nombre": "BladeDash_A",
+      "autor": "cutsdbz",
+      "archivo": "cf.cutsdbz.BladeDash_A.cfljson",
+      "version": "1",
+      "size": 40794
+    },
+    {
+      "id": "cf.cutsdbz.BladeDash_B",
+      "hash": "ED03FC75C1C7461549A331813148929B",
+      "nombre": "BladeDash_B",
+      "autor": "cutsdbz",
+      "archivo": "cf.cutsdbz.BladeDash_B.cfljson",
+      "version": "1",
+      "size": 11813
+    },
+    {
+      "id": "cf.cutsdbz.BladeDash_C",
+      "hash": "55352C294E11CE415225FCBFB71F9EAF",
+      "nombre": "BladeDash_C",
+      "autor": "cutsdbz",
+      "archivo": "cf.cutsdbz.BladeDash_C.cfljson",
+      "version": "1",
+      "size": 40869
     }
   ],
   "skins": [
@@ -192,6 +219,15 @@
       "archivo": "skin.jveda.AuroraNXE.xzp",
       "version": "1",
       "size": 11646057
+    },
+    {
+      "id": "skin.cutsdbz.BladeDash2025",
+      "hash": "25242A86F9C8D57961BCE08D52EF5B17",
+      "nombre": "BladeDash2025",
+      "autor": "cutsdbz",
+      "archivo": "skin.cutsdbz.BladeDash2025.xzp",
+      "version": "1",
+      "size": 70718936
     }
   ]
 }
