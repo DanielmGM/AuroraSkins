@@ -2,10 +2,14 @@ import { Octokit } from '@octokit/rest';
 import './styles.css';
 
 // GitHub OAuth configuration
-const GITHUB_CLIENT_ID = 'Ov23liuRieBx1l01duUQ';
-const GITHUB_REDIRECT_URI = window.location;
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+if (!GITHUB_CLIENT_ID) {
+    throw new Error("GITHUB_CLIENT_ID is not set. Please create a .env file and set the GITHUB_CLIENT_ID value.");
+}
+const GITHUB_TARGET_BRANCH = process.env.GITHUB_TARGET_BRANCH || 'main';
+const GITHUB_REDIRECT_URI = window.location.origin + window.location.pathname;
 const GITHUB_SCOPE = 'repo';
-const GITHUB_REPO_OWNER = 'tuxuser';
+const GITHUB_REPO_OWNER = 'DanielmGM';
 const GITHUB_REPO_NAME = 'AuroraSkins';
 
 // DOM Elements
@@ -256,7 +260,7 @@ async function createPullRequest(): Promise<void> {
             title: prTitle,
             body: prDescription,
             head: `${forkResponse.data.owner.login}:${branchName}`,
-            base: 'main'
+            base: GITHUB_TARGET_BRANCH
         });
 
         showStatus('Pull Request created successfully!', 'success');
