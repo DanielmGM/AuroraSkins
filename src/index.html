@@ -3,99 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuroraSkins Uploader</title>
+    <title>Aurora "SkinDownloader" Uploader</title>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>AuroraSkins Uploader</h1>
+            <h1>Aurora "SkinDownloader" Uploader</h1>
             <p>Upload Aurora Skin to GitHub via Pull Request</p>
         </header>
 
         <main>
             <div id="auth-section" class="section">
-                <button id="login-button" class="button">Login with GitHub</button>
+                <button id="login-button" class="button">Login with GitHub before uploading</button>
             </div>
 
             <div id="upload-section" class="section hidden">
-                <div class="tabs">
-                    <button class="tab-button active" data-tab="background">Background</button>
-                    <button class="tab-button" data-tab="coverflow">Coverflow</button>
-                    <button class="tab-button" data-tab="skin">Skin</button>
+
+                <!-- Submission Form -->
+                <div id="submission-form">
+                    <h3>1. Add a new file</h3>
+                    <div class="form-group">
+                        <label for="submission-type">Select content type:</label>
+                        <select id="submission-type" class="text-input">
+                            <option value="">--Please choose the content type--</option>
+                            <option value="background">Background</option>
+                            <option value="coverflow">Coverflow</option>
+                            <option value="skin">Skin</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic forms will be injected here -->
+                    <div id="forms-container">
+                        <!-- Background Form -->
+                        <div id="form-background" class="submission-form-pane hidden">
+                            <div class="form-group">
+                                <label for="background-name">Name:</label>
+                                <input type="text" id="background-name" class="text-input" placeholder="Enter background name">
+                            </div>
+                            <div class="form-group">
+                                <label for="background-author">Author:</label>
+                                <input type="text" id="background-author" class="text-input" placeholder="Enter author name">
+                            </div>
+                            <div class="form-group">
+                                <label for="background-image">Image File (max 30MB):</label>
+                                <input type="file" id="background-image" class="file-input" accept="image/*" data-max-size="31457280">
+                                <div class="file-size-info">Maximum file size: 30MB</div>
+                            </div>
+                        </div>
+
+                        <!-- Coverflow Form -->
+                        <div id="form-coverflow" class="submission-form-pane hidden">
+                             <div class="form-group">
+                                <label for="coverflow-file">Coverflow File (.cfljson, max 512KB):</label>
+                                <input type="file" id="coverflow-file" class="file-input" accept=".cfljson" data-max-size="524288">
+                                <div class="file-size-info">Maximum file size: 512KB</div>
+                            </div>
+                            <div id="coverflow-metadata-display" class="hidden">
+                                <h4>Coverflow Metadata:</h4>
+                                <div id="coverflow-metadata-content-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="coverflow-screenshot">Screenshot (JPEG, max 3MB):</label>
+                                <input type="file" id="coverflow-screenshot" class="file-input" accept="image/jpeg" data-max-size="3145728">
+                                <div class="file-size-info">Maximum file size: 3MB</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="coverflow-website">Website Source (Optional):</label>
+                                <input type="text" id="coverflow-website" class="text-input" placeholder="Enter website URL">
+                            </div>
+                        </div>
+
+                        <!-- Skin Form -->
+                        <div id="form-skin" class="submission-form-pane hidden">
+                            <div class="form-group">
+                                <label for="skin-file">Skin File (.xzp, max 100MB):</label>
+                                <input type="file" id="skin-file" class="file-input" accept=".xzp" data-max-size="104857600">
+                                <div class="file-size-info">Maximum file size: 100MB</div>
+                            </div>
+                            <div id="skin-metadata-display" class="hidden">
+                                <h4>Skin Metadata:</h4>
+                                <div id="skin-metadata-content-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="skin-screenshot">Screenshot (JPEG, max 3MB):</label>
+                                <input type="file" id="skin-screenshot" class="file-input" accept="image/jpeg" data-max-size="3145728">
+                                <div class="file-size-info">Maximum file size: 3MB</div>
+                            </div>
+                             <div class="form-group">
+                                <label for="skin-website">Website Source (Optional):</label>
+                                <input type="text" id="skin-website" class="text-input" placeholder="Enter website URL">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="add-to-queue-button" class="button hidden">Add to Submission Queue</button>
                 </div>
 
-                <div class="tab-content">
-                    <!-- Background Tab -->
-                    <div id="background" class="tab-pane active">
-                        <div class="form-group">
-                            <label for="background-name">Name:</label>
-                            <input type="text" id="background-name" class="text-input" placeholder="Enter background name">
-                        </div>
-                        <div class="form-group">
-                            <label for="background-author">Author:</label>
-                            <input type="text" id="background-author" class="text-input" placeholder="Enter author name">
-                        </div>
-                        <div class="form-group">
-                            <label for="background-image">Image File (max 30MB):</label>
-                            <input type="file" id="background-image" class="file-input" accept="image/*" data-max-size="31457280">
-                            <div class="file-size-info">Maximum file size: 30MB</div>
-                        </div>
-                    </div>
-
-                    <!-- Coverflow Tab -->
-                    <div id="coverflow" class="tab-pane">
-                        <div class="form-group">
-                            <label for="coverflow-name">Name:</label>
-                            <input type="text" id="coverflow-name" class="text-input" placeholder="Enter coverflow name">
-                        </div>
-                        <div class="form-group">
-                            <label for="coverflow-author">Author:</label>
-                            <input type="text" id="coverflow-author" class="text-input" placeholder="Enter author name">
-                        </div>
-                        <div class="form-group">
-                            <label for="coverflow-website">Website Source:</label>
-                            <input type="text" id="coverflow-website" class="text-input" placeholder="Enter website URL">
-                        </div>
-                        <div class="form-group">
-                            <label for="coverflow-screenshot">Screenshot (JPEG, max 3MB):</label>
-                            <input type="file" id="coverflow-screenshot" class="file-input" accept="image/jpeg" data-max-size="3145728">
-                            <div class="file-size-info">Maximum file size: 3MB</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="coverflow-file">File (max 512KB):</label>
-                            <input type="file" id="coverflow-file" class="file-input" accept=".cfljson" data-max-size="524288">
-                            <div class="file-size-info">Maximum file size: 512KB</div>
-                        </div>
-                    </div>
-
-                    <!-- Skin Tab -->
-                    <div id="skin" class="tab-pane">
-                        <div class="form-group">
-                            <label for="skin-name">Name:</label>
-                            <input type="text" id="skin-name" class="text-input" placeholder="Enter skin name">
-                        </div>
-                        <div class="form-group">
-                            <label for="skin-author">Author:</label>
-                            <input type="text" id="skin-author" class="text-input" placeholder="Enter author name">
-                        </div>
-                        <div class="form-group">
-                            <label for="skin-website">Website Source:</label>
-                            <input type="text" id="skin-website" class="text-input" placeholder="Enter website URL">
-                        </div>
-                        <div class="form-group">
-                            <label for="skin-screenshot">Screenshot (JPEG, max 3MB):</label>
-                            <input type="file" id="skin-screenshot" class="file-input" accept="image/jpeg" data-max-size="3145728">
-                            <div class="file-size-info">Maximum file size: 3MB</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="skin-file">File (max 100MB):</label>
-                            <input type="file" id="skin-file" class="file-input" accept=".xzp" data-max-size="104857600">
-                            <div class="file-size-info">Maximum file size: 100MB</div>
-                        </div>
-                    </div>
+                <!-- Submission Queue -->
+                <div id="queue-section">
+                    <h3>2. Review your submission queue</h3>
+                    <ul id="queue-list">
+                        <!-- Queue items will be added here dynamically -->
+                        <li id="queue-placeholder">Your queue is empty.</li>
+                    </ul>
+                    <button id="create-pr-button" class="button hidden">Create Pull Request with Queued Files</button>
                 </div>
-
-                <button id="create-pr-button" class="button">Create Pull Request</button>
             </div>
 
             <div id="status-section" class="section hidden">
